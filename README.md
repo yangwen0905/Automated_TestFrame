@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # pytestDemo
 
 实现接口自动化的技术选型：**Python+Requests+Pytest+YAML+Allure** ，主要是针对本人的一个接口项目来开展的，通过 Python+Requests 来发送和处理 HTTP 协议的请求接口，使用 Pytest 作为测试执行器，使用 YAML 来管理测试数据，使用 Allure 来生成测试报告。
@@ -68,5 +69,4 @@ allure serve ./report
 
   注：配置好变量环境后需重启编辑器
 ```
-
 
