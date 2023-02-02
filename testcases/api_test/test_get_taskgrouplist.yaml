@@ -1,0 +1,12 @@
+-
+  feature: 任务列表模块
+  story: 查看任务组接口
+  title: 输入正确账号密码获取token
+  request:
+    method: get
+    url: api/taskGroup/getTaskGroupList
+    headers: 
+      Authorization: access_token
+    data: null
+  vilidate: 
+    codes: 200
