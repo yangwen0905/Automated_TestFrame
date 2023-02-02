@@ -1,0 +1,14 @@
+-
+  feature: 任务列表模块
+  story: 查看某一任务组接口
+  title: 输入正确taskgroupid获取task信息
+  request:
+    method: get
+    url: /api/task
+    headers: 
+      Authorization: access_token
+    params: 
+      taskGroupId: taskGroupId
+      
+  vilidate: 
+    codes: 200

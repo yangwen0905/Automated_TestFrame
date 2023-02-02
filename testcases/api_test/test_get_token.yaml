@@ -1,0 +1,36 @@
+-
+  feature: 登录模块
+  story: 获取token接口
+  title: 输入正确账号密码获取token
+  request:
+    method: post
+    url: https://auth.bazhuayu.com/token
+    headers: 
+      Content-Type: "application/x-www-form-urlencoded"
+    datas:
+      username: "ykn89534"
+      password: "ykn89534"
+      grant_type: "password"
+      client_id: "octopus"
+      client_secret: "8.5.2"
+      encrypted: "false"
+  vilidate: 
+    codes: 200
+-
+  feature: 登录模块
+  story: 获取token接口
+  title: 输入错误账号登录失败
+  request:
+    method: post
+    url: https://auth.bazhuayu.com/token
+    headers: 
+      "Content-Type": "application/x-www-form-urlencoded"
+    datas:
+      username: "ykn89534"
+      password: "ykn8953"
+      grant_type: "password"
+      client_id: "octopus"
+      client_secret: "8.5.2"
+      encrypted: "false"
+  vilidate: 
+    codes: 200
