@@ -4,7 +4,7 @@
   title: 输入正确taskgroupid获取task信息
   request:
     method: get
-    url: /api/task
+    url: api/task
     headers: 
       Authorization: access_token
     params: 
