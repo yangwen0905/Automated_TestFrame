@@ -26,9 +26,6 @@ class LoggerUtil():
         self.console.setLevel(logging.DEBUG)
         self.filelogger.setLevel(logging.DEBUG)
 
-        
-
-        
         # 创建一个logger，loggerName为该logger名字
         self.logger = logging.getLogger(loggerName)
         
