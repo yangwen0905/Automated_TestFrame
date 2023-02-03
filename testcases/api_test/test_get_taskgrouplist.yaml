@@ -6,7 +6,7 @@
     method: get
     url: api/taskGroup/getTaskGroupList
     headers: 
-      Authorization: access_token
+      Authorization: Bearer access_token
     data: null
   vilidate: 
     codes: 200

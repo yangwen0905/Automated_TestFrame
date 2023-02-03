@@ -6,7 +6,7 @@
     method: get
     url: api/task
     headers: 
-      Authorization: access_token
+      Authorization: Bearer access_token
     params: 
       taskGroupId: taskGroupId
       
