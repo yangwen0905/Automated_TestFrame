@@ -1,4 +1,5 @@
 import requests
+import re
 import json as complexjson
 from service.common.yaml_operate_util import read_config_yaml, read_extract_yaml
 from service.common.logger_util import logger
@@ -14,101 +15,142 @@ class RequestUtil():
         self.auth_base_url = read_config_yaml('url', 'auth_base_url')
         #初始化基本路径
         self.base_url = read_config_yaml('url', 'base_url')
-        #初始化请求头（如果不初始化此变量，则get,post,put,delete方法传参时会报错）
-        self.last_headers = {"Content-Type": "application/x-www-form-urlencoded"}
-        #初始化请求数据（如果不初始化此变量，则get,post,put,delete方法传参时会报错）
-        self.last_data = {}
+        # #初始化请求头（如果不初始化此变量，则get,post,put,delete方法传参时会报错）
+        # self.last_headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        # #初始化请求数据（如果不初始化此变量，则get,post,put,delete方法传参时会报错）
+        # self.last_data = {}
+        # self.last_params = {}
+        # self.obj = obj   #热加载
+
+    def replace_value(self, data):
+        if data:
+            #保存数据类型
+            data_type = type(data)
+            #判断数据类型转换成str
+            if isinstance(data, dict) or isinstance(data,list):
+                str_data = complexjson.dumps(data)
+            else:
+                str_data = str(data)
+            for cs in range(1,str_data.count('${') + 1):
+                if "${" in str_data and "} "in str_data:
+                    start_index = str_data.index('${')
+                    end_index = str_data.index('}', start_index)
+                    old_value = str_data[start_index:end_index+1]
+                    print("old_value:"+old_value)
+                    #反射：通过类的对象和方法字符串调用方法
+                    func_name = old_value[2:old_value.index('(')]
+                    args_value1 = old_value[old_value.index('(')+1:old_value.index(')')]
+                    new_value = ""
+                    if args_value1 != "":
+                        args_value2 = args_value1.split(',')
+                        new_value = getattr(self.obj, func_name)(*args_value2)
+                    else:
+                        new_value = getattr(self.obj, func_name)()
+                    str_data = str_data.replace(old_value,str(new_value))
+            #还原数据类型
+            if isinstance(data,dict) or isinstance(data,list):
+                data = complexjson.loads(str_data)
+            else:
+                data = data_type(str_data)
+
+    #规范yaml测试用例
+    def standard_yaml(self,caseinfo):
+        caseinfo_keys = caseinfo.keys()
+        #判断以及关键字是否包含：story，requst,validate
+        if "feature" in caseinfo_keys and "story" in caseinfo_keys and "title" in caseinfo_keys and "request" in caseinfo_keys and "vilidate" in caseinfo_keys:
+            request_keys = caseinfo["request"].keys()
+            #判断request下面是否包含：method、url
+            if "method" in request_keys and "url" in request_keys:
+                logger.info("yaml基本架构检查通过")
+                method = caseinfo["request"].pop("method")
+                url = caseinfo["request"].pop("url")
+                
+                
+                res = self.send_request(method, url,**caseinfo['request'])   #caseinfo需要解包加**
+                return_text = res.text
+                return_code = res.status_code
+                return_json = ""
+                print("return_text:"+return_text)
+                print(return_code)
+                print("return_json"+return_json)
+                try:
+                    return_json = res.json()
+                except Exception as e:
+                    logger.info("extract返回的结果不是JSON格式")
+                
+                #断言：
+                
+
+
     
-    # 封装各类型请求
-    def get(self, url, headers, data):
-         res = requests.get(url, headers=headers, data=data)
-         print(res.json())
-         return res
+    # # 封装各类型请求
+    # def get(self, method, url, **kwargs):
+    #      res = RequestUtil.session.request(method, url, **kwargs)
+    #      return res
 
-    def post(self, url, headers, data):
-        res = requests.post(url, headers=headers, data=data)
-        return res
+    # def post(self, method, url, **kwargs):
+    #     res = RequestUtil.session.request(method, url, **kwargs)
+    #     # res = requests.post(method=method, url=url, **kwargs)
+    #     return res
 
-    def put(self, url, headers, data):
-        res = requests.put(url, headers=headers, data=data)
-        return res
+    # def put(self, method, url, **kwargs):
+    #     res = RequestUtil.session.request(method, url, **kwargs)
+    #     return res
 
-    def delete(self, url, headers, data):
-        res = requests.delete(url, headers=headers, data=data)
-        return res
+    # def delete(self, method, url, **kwargs):
+    #     res = RequestUtil.session.request(method, url, **kwargs)
+    #     return res
 
-    def patch(self, url, headers, data):
-        res = requests.put(url, headers=headers, data=data)
-        return res
+    # def patch(self, method, url, **kwargs):
+    #     res = RequestUtil.session.request(method, url, **kwargs)
+    #     return res
 
 
-    #统一请求信息
-    def send_token_request(self, **kwargs):
-        res = RequestUtil.session.request(**kwargs)
-        return res
+    # #统一请求信息
+    # def send_token_request(self, **kwargs):
+    #     res = RequestUtil.session.request(**kwargs)
+    #     return res
 
-    def send_request(self, method, url, headers, data=None, **kwargs):
-        json = dict(**kwargs).get("json")
-        params = dict(**kwargs).get("params")
-        files = dict(**kwargs).get("files")
-        cookies = dict(**kwargs).get("cookies")
-        # res = RequestUtil.session.request(**kwargs)
-        #method参数转换为小写
-        self.last_method = str(method).lower()
-
-        #处理请求路径url
-        #如果请求路径中包括${和}，则需要做参数提取
-        # for cs in range(1,str(url).count('${')+1):
-        #     if '${' in url and '}' in url:
-        #         startIndex = str(url).find('${')
-        #         endIndex = str(url).find('}')
-        #         oldValue = str(url)[int(startIndex):int(endIndex)+1]
-        #         newValue = read_extract_yaml(str(oldValue)[2:-1])
-        #         url = str(url).replace(oldValue, newValue)
-        self.last_url = self.base_url + url
-
-        #如果headers不为None并且为字典类型，则在self.headers中增加请求头
-        # if headers and isinstance(headers, dict):
-        #     for key,value in headers.items():
-        #         if str(value).startswith('${') and str(value).endswith('}'):
-        #             self.last_headers[str(key)] = read_extract_yaml(str(value)[2:-1])
-        #         else:
-        #             self.last_headers[str(key)] = str(value)
-        if headers and isinstance(headers, dict):
-            for key,value in headers.items():
-                self.last_headers[str(key)] = str(value)
-        #如果data不为None并且为字典类型，则转换成json字符串，（因为get和post方式都支持传入json）
-        # if data and isinstance(data, dict):
-        #     for key,value in data.items():
-        #         if str(value).startswith('${') and str(value).endswith('}'):
-        #             data[str(key)] = read_extract_yaml(str(value)[2:-1])
-        #         else:
-        #             data[str(key)] = str(value)
-        # self.last_data = complexjson.dumps(data)
-        self.last_data = data
-        # 输出日志获取请求信息
-        self.request_log(url, method, data, json,
-                         params, headers, files, cookies)
+    def send_request(self, method, url, **kwargs):
+        # #method参数转换为小写
+        self.method = str(method).lower()
         
-        #根据不同请求方式调用requests模块中不同的方法
-        res = ''
-        if self.last_method == "get":
-            res = self.get(self.last_url, self.last_headers, self.last_data)
-        elif self.last_method == "post":
-            res = self.post(self.last_url, self.last_headers, self.last_data)
-        elif self.last_method == "PUT":
-            if json:
-                # PUT 和 PATCH 中没有提供直接使用json参数的方法，因此需要用data来传入
-                data = complexjson.dumps(json)
-            res = self.put(self.last_url, self.last_headers, self.last_data)
-        elif self.last_method == "DELETE":
-            res = self.delete(self.last_url, self.last_headers, self.last_data)
-        elif self.last_method == "PATCH":
-            if json:
-                data = complexjson.dumps(json)
-            res = self.patch(self.last_url, self.last_headers, self.last_data)
+        if url == "token":
+            self.url = self.auth_base_url + url
         else:
-            logger.info('不支持的接口请求方式！')
+            self.url = self.base_url + url
+        # #参数替换
+        # for key, value in kwargs.items():
+        #     if key in ['params','data','json','headers']:
+        #         print(kwargs[key])
+                
+            # elif key == "files":
+            #     for file_key,file_path in value.items():
+            #         value[file_key] = open(file_path,'rb')
+        
+                   
+        res = RequestUtil.session.request(method, self.url, **kwargs)
+        # return res
+        # 输出日志获取请求信息
+        
+        
+        # 根据不同请求方式调用requests模块中不同的方法
+        
+        # if self.method == "get":
+        #     res = self.get(method, self.url, **kwargs)
+        # elif self.method == "post":
+        #     res = self.post(method, self.url, **kwargs)
+        # elif self.last_method == "put":
+        #     res = self.put(method, self.url, **kwargs)
+        # elif self.last_method == "delete":
+        #     res = self.delete(method, self.url, **kwargs)
+        # elif self.last_method == "patch":
+        #     res = self.patch(method, self.url, **kwargs)
+        # else:
+        #     logger.info('不支持的接口请求方式！')
+        self.request_log(url, method, **kwargs)
+        return res
+    
     
 
     def request_log(self, url, method, data=None, json=None, params=None, headers=None, files=None, cookies=None, **kwargs):
