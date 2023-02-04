@@ -10,5 +10,5 @@
     params: 
       taskGroupId: taskGroupId
       
-  vilidate: 
-    codes: 200
+  validate:
+    - equals: {status_code: 200}
