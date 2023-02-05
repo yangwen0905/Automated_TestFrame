@@ -12,6 +12,7 @@
 
 基于代码类的技术选型：**Python+Requests+Pytest+YAML+Allure** 
 选型理由：整个选型基于python，其内的大部分框架均为python的相关插件，与python的融合性，兼容性较好。相较于java的厚重，python更加轻量，易于读写且兼容众多平台，新手更易学习。pytest脱胎于unittest但更优，包含很多扩展的插件，语法也更简单且易上手。
+
 扩展技术选型：
 
 关联报告发送 - JIRA
@@ -20,7 +21,7 @@
 
 ## 项目说明
 
-本项目在实现过程中，把整个项目拆分成请求方法封装、HTTP 接口封装、关键字封装、测试用例等模块。
+通过Python+Requests统一发送和处理请求接口， 使用Pytest作为测试执行器， 使用Allure生成测试报告，使用YAML+Excel管理测试数据，使用Loguru管理日志。
 
 
 
@@ -39,6 +40,16 @@ pip3 install -r requirements.txt
 pytest
 ```
 
+## 实现功能
+
+- 采用统一请求封装，session自动关联
+- 接口测试数据（接口测试的配置、路径、参数、调用方法等）与代码进行分离，
+- 支持多接口数据依赖: 如A接口需要同时依赖B、C接口的响应数据作为参数
+- 支持批量多组测试数据
+- 项目运行自动生成Log日志文件、Allure报告
+- 支持配置多个环境执行
+
+
 ## 项目结构
 
 - service 
@@ -49,7 +60,7 @@ pytest
 - report ====>> 存放测试报告
 - pytest.ini ====>> pytest 配置文件
 - requirements.txt ====>> 相关依赖包文件
-- run.py ====>> 项目运行入口
+- run.py ====>> 项目运行入口（执行测试集的主程序）
 
 
 ## yaml编写测试用例常规格式及可用关键字
@@ -70,7 +81,7 @@ pytest
     contains
 
 ```
-# 需要提前配置allure环境
+# 生成allure报告需要提前配置allure环境
 
   官网下载安装包，配置变量环境path
 
