@@ -21,7 +21,7 @@
 
 ## 项目说明
 
-通过Python+Requests统一发送和处理请求接口， 使用Pytest作为测试执行器， 使用Allure生成测试报告，使用YAML+Excel管理测试数据，使用Loguru管理日志。
+通过Python+Requests统一发送和处理请求接口， 使用Pytest作为测试执行器， 使用Allure生成测试报告，使用YAML管理测试数据，使用Logging管理日志。
 
 
 
