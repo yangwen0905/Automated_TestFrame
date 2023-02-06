@@ -8,7 +8,7 @@ from service.common.yaml_operate_util import clean_loginToken_yaml, write_loginT
 @allure.feature("用户登录模块")
 class TestGettoken():
 
-    @pytest.mark.parametrize("caseinfo", read_testcase_yaml("api_test/test_get_token.yaml"))
+    @pytest.mark.parametrize("caseinfo", read_testcase_yaml("data/test_get_token.yaml"))
     def test_get_token(self, caseinfo):
         res = RequestUtil().send_request(caseinfo)
         allure.dynamic.story(caseinfo["story"])

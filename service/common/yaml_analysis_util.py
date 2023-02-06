@@ -42,11 +42,11 @@ class YamlAnalysis():
                         for key, value in params.items():
                             if key == 'taskGroupId':
                                 params["taskGroupId"] = read_extract_yaml("taskGroupId")
-                # elif key == "files":
-                #     for file_key,file_path in value.items():
-                #         value[file_key] = open(file_path,'rb')        
-                # res = self.send_request(method, url, **caseinfo['request'])  # caseinfo需要解包加**
-                # return last_caseinfo
+                    # elif key == "files":
+                    #     for file_key,file_path in value.items():
+                    #         value[file_key] = open(file_path,'rb')        
+                    # res = self.send_request(method, url, **caseinfo['request'])  # caseinfo需要解包加**
+                    # return last_caseinfo
                 
                 try:
                     return last_caseinfo
