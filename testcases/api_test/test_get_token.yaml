@@ -38,5 +38,6 @@
     - equals:
         status_code: 400
         error: invalid_user
+        error_Description: 用户名或密码错误
 
 

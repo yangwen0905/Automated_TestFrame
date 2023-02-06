@@ -10,6 +10,6 @@ class TestGettoken():
 
     @pytest.mark.parametrize("caseinfo", read_testcase_yaml("api_test/test_get_token.yaml"))
     def test_get_token(self, caseinfo):
-        res = RequestUtil().standard_yaml(caseinfo)
+        res = RequestUtil().send_request(caseinfo)
         allure.dynamic.story(caseinfo["story"])
         allure.dynamic.title(caseinfo["title"])
