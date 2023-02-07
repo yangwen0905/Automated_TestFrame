@@ -6,10 +6,6 @@ url:
     # auth_base_url: https://auth.bazhuayu.com
     # base_url: https://v2.clientapi.bazhuayu.com
 
-log:
-    log_name: log_
-    file_log_format:
-    console_log_level: info
-    console_log_fomat: 
-report:
-    report_name: report_
+login_user:
+    username: 
+    password: 

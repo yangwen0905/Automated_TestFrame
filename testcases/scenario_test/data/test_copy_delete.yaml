@@ -1,0 +1,49 @@
+-
+  login:
+    story: 登录
+    title: 登录获取token
+    request:
+      method: post
+      url: token
+      headers: 
+        Content-Type: "application/x-www-form-urlencoded"
+      data:
+        username: "ykn89534"
+        password: "ykn89534"
+        grant_type: "password"
+        client_id: "octopus"
+        client_secret: "8.5.2"
+        encrypted: "false"
+    validate:
+      - equals:
+          status_code: 200
+  copytask:
+    story: 复制
+    title: 复制任务
+    request:
+      method: post
+      url: api/task/copyTask
+      headers: 
+        Authorization: Bearer access_token
+      params: 
+        taskId: d187646a-ec7f-212d-7652-d39f839de489
+        groupId: ""
+        returnId: true
+    validate:
+      - equals:
+          status_code: 200
+          error: success
+  deletetask:
+    story: 删除
+    title: 删除任务
+    request:
+      method: delete
+      url: api/task/batch/deleteTask
+      headers: 
+        Authorization: Bearer access_token
+      data: 
+        taskIds: [taskId]
+    validate:
+      - equals:
+          status_code: 200
+

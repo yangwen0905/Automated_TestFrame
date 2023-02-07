@@ -10,7 +10,7 @@ class YamlAnalysis():
         caseinfo_keys = caseinfo.keys()
         last_caseinfo = caseinfo
         # 判断以及关键字是否包含：story，request,validate
-        if "feature" in caseinfo_keys and "story" in caseinfo_keys and "title" in caseinfo_keys \
+        if "story" in caseinfo_keys and "title" in caseinfo_keys \
                 and "request" in caseinfo_keys and "validate" in caseinfo_keys:
             request_keys = caseinfo["request"].keys()
 
@@ -42,6 +42,14 @@ class YamlAnalysis():
                         for key, value in params.items():
                             if key == 'taskGroupId':
                                 params["taskGroupId"] = read_extract_yaml("taskGroupId")
+                                last_caseinfo["params"] = params
+                    if key == 'data':
+                        data = kwargs["data"]
+                        for key, value in data.items():
+                            if key == 'taskIds':
+                                data["taskIds"] = read_extract_yaml("taskIds")
+                                last_caseinfo["data"] = data
+                                print(last_caseinfo)
                     # elif key == "files":
                     #     for file_key,file_path in value.items():
                     #         value[file_key] = open(file_path,'rb')        
@@ -55,7 +63,7 @@ class YamlAnalysis():
             else:
                 logger.info("request中必须包含method, url")
         else:
-            logger.info("一级关键字必须包含feature, story, title")
+            logger.info("一级关键字必须包含story, title")
 
     def replace_value(self, data):
         if data:

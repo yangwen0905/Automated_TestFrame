@@ -1,0 +1,43 @@
+-
+  feature: 用户登录模块
+  story: 获取token接口
+  title: 输入正确账号密码获取token
+  request:
+    method: post
+    url: token
+    headers: 
+      Content-Type: "application/x-www-form-urlencoded"
+    data:
+      username: "ykn89534"
+      password: "ykn89534"
+      grant_type: "password"
+      client_id: "octopus"
+      client_secret: "8.5.2"
+      encrypted: "false"
+  validate:
+    - equals:
+        status_code: 200
+#    - contains:
+-
+  feature: 用户登录模块
+  story: 获取token接口
+  title: 输入错误账号登录失败
+  request:
+    method: post
+    url: token
+    headers:
+      "Content-Type": "application/x-www-form-urlencoded"
+    data:
+      username: "ykn89534"
+      password: "ykn8953"
+      grant_type: "password"
+      client_id: "octopus"
+      client_secret: "8.5.2"
+      encrypted: "false"
+  validate:
+    - equals:
+        status_code: 400
+        error: invalid_user
+        error_Description: 用户名或密码错误
+
+
