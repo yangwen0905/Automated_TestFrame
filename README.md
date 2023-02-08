@@ -19,13 +19,7 @@
 
 ## 项目说明
 
-项目使用YAML管理测试数据，经过文件解析处理，使接口通过Requests统一发送请求，请求成功后对返回值进行断言，形成一条完整接口测试链路。
-
-将所有相关接口封装成关键字，提供给单接口测试和业务场景测试，减少各模块间代码耦合，使用Logging管理日志生成日志文件。
-Pytest作为测试执行器， 将测试结果生成Allure测试报告展示。
-
-
-
+![image]https://github.com/yangwen0905/github-slideshow/blob/yangwen0905-patch-1/Snipaste_2023-02-08_21-27-06.png
 
 
 
