@@ -19,7 +19,7 @@
 
 ## 项目说明
 
-![image](https://github.com/yangwen0905/github-slideshow/blob/yangwen0905-patch-1/Snipaste_2023-02-08_21-27-06.png)
+![image](https://github.com/yangwen0905/api_testframe/blob/main/image/Snipaste_2023-02-08_21-44-03.png)
 
 
 
