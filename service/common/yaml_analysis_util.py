@@ -1,7 +1,7 @@
 
 import json as complexjson
 from service.common.logger_util import LoggerUtil, logger
-from service.common.yaml_operate_util import read_config_yaml, read_extract_yaml, read_loginToken_yaml
+from service.common.yaml_operate_util import read_config_yaml, read_extract_yaml, read_loginToken_yaml, read_extract_yaml_list
 
 # 解析yaml测试用例
 class YamlAnalysis():
@@ -35,7 +35,8 @@ class YamlAnalysis():
                     last_caseinfo["headers"] = headers
                 # 参数替换
                 kwargs = caseinfo['request']
-            
+
+                # 针对某些前置参数值的获取
                 for key, value in kwargs.items():
                     if key == 'params':
                         params = kwargs["params"]
@@ -47,7 +48,7 @@ class YamlAnalysis():
                         data = kwargs["data"]
                         for key, value in data.items():
                             if key == 'taskIds':
-                                data["taskIds"] = read_extract_yaml("taskIds")
+                                data["taskIds"] = read_extract_yaml_list("taskIds")
                                 last_caseinfo["data"] = data
                                 print(last_caseinfo)
                     # elif key == "files":

@@ -3,7 +3,7 @@ import logging
 import time
 import json as complexjson
 from service.common.yaml_operate_util import clean_loginToken_yaml, read_config_yaml
-from service.conf.setting import LOG_PATH
+from service.data.setting import LOG_PATH
 
 
 class LoggerUtil():

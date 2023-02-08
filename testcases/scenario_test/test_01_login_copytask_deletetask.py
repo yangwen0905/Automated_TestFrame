@@ -1,6 +1,6 @@
 import pytest
 import allure
-from service.common.yaml_operate_util import read_testcase_yaml
+from service.common.yaml_operate_util import read_testcase_data_yaml
 from service.api_interface.user_api import User
 from service.api_interface.task_api import Task
 from service.common.logger_util import logger
@@ -28,10 +28,13 @@ class TestLogCpDel():
     @allure.story("用例--用户登录-复制任务-删除任务")
     @allure.title("复制-删除-预期成功")
     @pytest.mark.multiple
-    @pytest.mark.parametrize("caseinfo", read_testcase_yaml("scenario_test/data/test_copy_delete.yaml"))
+    @pytest.mark.parametrize("caseinfo", read_testcase_data_yaml("scenario_test_data/test_copy_delete.yaml"))
     def test_task_login_copy_delete(self, caseinfo):
+        # 登录的测试数据
         gettoken_data = caseinfo["login"]
+        # 复制任务的测试数据
         copytask_data = caseinfo["copytask"]
+        # 删除任务的测试数据
         deletetask_data = caseinfo["deletetask"]
         username = gettoken_data["request"]["data"]["username"]
 

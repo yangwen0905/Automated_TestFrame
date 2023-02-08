@@ -9,15 +9,15 @@ REPORT_PATH = os.path.join(BASE_PATH, 'report')       #报告存放目录
 
 CASE_PATH = os.path.join(BASE_PATH, 'testcases')       #测试用例目录
 
-CASE_DATA_PATH = os.path.join(BASE_PATH, '')          #测试数据的目录
+CASE_DATA_PATH = os.path.join(BASE_PATH, 'service/data')          #测试数据的目录
 
 LOG_PATH = os.path.join(BASE_PATH, 'log')             #日志存放目录
 
-CONFIG_FILE = os.path.join(BASE_PATH, 'service/conf', 'config.yaml')
+CONFIG_FILE = os.path.join(BASE_PATH, 'service/data', 'config.yaml')
 
-LOGIN_TOKEN_YAML_FILE = os.path.join(BASE_PATH, 'service/conf', 'loginToken.yaml')
+LOGIN_TOKEN_YAML_FILE = os.path.join(BASE_PATH, 'service/data', 'loginToken.yaml')
 
-EXTACT_FILE = os.path.join(BASE_PATH, 'service/conf', 'extract.yaml')
+EXTACT_FILE = os.path.join(BASE_PATH, 'service/data', 'extract.yaml')
 
 
 
