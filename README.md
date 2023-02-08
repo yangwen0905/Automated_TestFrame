@@ -19,24 +19,15 @@
 
 ## 项目说明
 
-通过Python+Requests统一发送和处理请求接口， 使用Pytest作为测试执行器， 使用Allure生成测试报告，使用YAML管理测试数据，使用Logging管理日志。
+项目使用YAML管理测试数据，经过文件解析处理，使接口通过Requests统一发送请求，请求成功后对返回值进行断言，形成一条完整接口测试链路。
+
+将所有相关接口封装成关键字，提供给单接口测试和业务场景测试，减少各模块间代码耦合，使用Logging管理日志生成日志文件。
+Pytest作为测试执行器， 将测试结果生成Allure测试报告展示。
 
 
 
 
-## 项目部署
 
-首先，下载项目源码后，在根目录下找到 `requirements.txt` 文件，然后通过 pip 工具安装 requirements.txt 依赖，执行命令：
-
-```
-pip3 install -r requirements.txt
-```
-
-接着，修改 `config/setting.ini` 配置文件，在 Windows 环境下，安装相应依赖之后，在命令行窗口执行命令：
-
-```
-pytest
-```
 
 ## 实现功能
 
