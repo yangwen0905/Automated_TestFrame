@@ -48,7 +48,7 @@
 
 
 ## yaml编写测试用例常规格式及可用关键字
-
+```
   feature: 模块名
   story: 接口名（必填）
   title: 用例标题（必填）
@@ -63,12 +63,13 @@
   vilidate: 断言（必填）
     equals
     contains
-
 ```
-# 生成allure报告需要提前配置allure环境
+
+
+## 生成allure报告需要提前配置allure环境
 
   官网下载安装包，配置变量环境path
 
   注：配置好变量环境后需重启编辑器
-```
+
 
