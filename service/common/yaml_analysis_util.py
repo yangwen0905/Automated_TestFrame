@@ -3,7 +3,7 @@ import json as complexjson
 from service.common.logger_util import LoggerUtil, logger
 from service.common.yaml_operate_util import read_config_yaml, read_extract_yaml, read_loginToken_yaml, read_extract_yaml_list
 
-# 解析yaml测试用例
+'''解析yaml测试用例'''
 class YamlAnalysis():
 
     def standard_yaml(self, caseinfo):
@@ -44,19 +44,15 @@ class YamlAnalysis():
                             if key == 'taskGroupId':
                                 params["taskGroupId"] = read_extract_yaml("taskGroupId")
                                 last_caseinfo["params"] = params
-                    if key == 'data':
-                        data = kwargs["data"]
-                        for key, value in data.items():
+                    if key == 'json':
+                        json = kwargs["json"]
+                        for key, value in json.items():
                             if key == 'taskIds':
-                                data["taskIds"] = read_extract_yaml_list("taskIds")
-                                last_caseinfo["data"] = data
-                                print(last_caseinfo)
+                                json["taskIds"] = read_extract_yaml_list("taskIds")
+                                last_caseinfo["json"] = json
                     # elif key == "files":
                     #     for file_key,file_path in value.items():
-                    #         value[file_key] = open(file_path,'rb')        
-                    # res = self.send_request(method, url, **caseinfo['request'])  # caseinfo需要解包加**
-                    # return last_caseinfo
-                
+                    #         value[file_key] = open(file_path,'rb')   
                 try:
                     return last_caseinfo
                 except Exception as e:
@@ -65,7 +61,8 @@ class YamlAnalysis():
                 logger.info("request中必须包含method, url")
         else:
             logger.info("一级关键字必须包含story, title")
-
+            
+    '''yaml参数替换'''
     def replace_value(self, data):
         if data:
             # 保存数据类型

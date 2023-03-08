@@ -17,7 +17,7 @@ def step_2():
 
 @allure.step("步骤3 ==>> 删除task")
 def step_3():
-    logger.info("步骤3 ==>> 删除task: {}".format())
+    logger.info("步骤3 ==>> 删除task")
 
 
 @allure.severity(allure.severity_level.CRITICAL)

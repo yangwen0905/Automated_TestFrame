@@ -38,7 +38,7 @@ class Validate():
             if assert_key == "status_code":
                 if assert_value != status_code:
                     flag = flag + 1
-                    logger.info("断言失败，预期状态码{}返回的状态码{}".format(status_code, assert_value))
+                    logger.info("断言失败，预期状态码{}返回的状态码{}".format(assert_value, status_code))
             else:
                 assert_value_list = jsonpath.jsonpath(actual_result, f"$..{assert_key}")
                 if assert_value_list:

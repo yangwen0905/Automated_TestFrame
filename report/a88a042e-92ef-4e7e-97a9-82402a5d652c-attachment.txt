@@ -1,0 +1,58 @@
+INFO     log:test_01_login_copytask_deletetask.py:41 *********************** 开始执行用例 ***********************
+INFO     log:yaml_analysis_util.py:19 yaml基本架构检查通过
+INFO     log:logger_util.py:65 接口请求地址 ==>> post
+INFO     log:logger_util.py:66 接口请求方式 ==>> https://auth.bazhuayu.com/token
+INFO     log:logger_util.py:69 接口请求头 ==>> {
+    "Content-Type": "application/x-www-form-urlencoded"
+}
+INFO     log:logger_util.py:71 接口请求 params 参数 ==>> null
+INFO     log:logger_util.py:73 接口请求体 data 参数 ==>> {
+    "username": "ykn89534",
+    "password": "ykn89534",
+    "grant_type": "password",
+    "client_id": "octopus",
+    "client_secret": "8.5.2",
+    "encrypted": "false"
+}
+INFO     log:logger_util.py:75 接口请求体 json 参数 ==>> null
+INFO     log:logger_util.py:76 接口上传附件 files 参数 ==>> None
+INFO     log:logger_util.py:78 接口 cookies 参数 ==>> null
+INFO     log:validate_util.py:20 断言方式：equals,预期结果：{'status_code': 200}
+INFO     log:test_01_login_copytask_deletetask.py:11 步骤1 ==>> 登录用户: ykn89534
+INFO     log:yaml_analysis_util.py:19 yaml基本架构检查通过
+INFO     log:logger_util.py:65 接口请求地址 ==>> post
+INFO     log:logger_util.py:66 接口请求方式 ==>> https://v2.clientapi.bazhuayu.com/api/task/copyTask
+INFO     log:logger_util.py:69 接口请求头 ==>> {
+    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2NzgyNDQ3MTAsImV4cCI6MTY3ODMzMTExMCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5iYXpodWF5dS5jb20iLCJhdWQiOlsiQ2xpZW50QXBpIiwiRGF0YUFwaSIsIkFkdmFuY2VkQXBpIiwiQ2xvdWRBZ2VudCIsIkNsdXN0ZXJTZXJ2aWNlIl0sImNsaWVudF9pZCI6Ik9jdG9wdXMiLCJzdWIiOiJlZTVkZDAxNC04MGE3LTQ0NTAtYmEzMi1lYWZiZmRhNGYzNjgiLCJhdXRoX3RpbWUiOjE2NzgyNDQ3MTAsImlkcCI6ImxvY2FsIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJlZTVkZDAxNC04MGE3LTQ0NTAtYmEzMi1lYWZiZmRhNGYzNjgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoieWtuODk1MzQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ5a244OTUzNCIsInVuaXF1ZV9uYW1lIjoieWtuODk1MzQiLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wOS0wOFQxOTo1MzoyOCswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjIwMjMtMDMtMDhUMTA6NTc6MzYrMDg6MDAiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ5a244OTUzNEB5dW9pYS5jb20iLCJlbWFpbCI6Inlrbjg5NTM0QHl1b2lhLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJDbGllbnRBcGkiLCJEYXRhQXBpIiwiQWR2YW5jZWRBcGkiLCJDbG91ZEFnZW50IiwiQ2x1c3RlclNlcnZpY2UiXX0.QcRp4_82uWBfiOkATCDTWqWfCtE8pBhIi4CayCsfzk-THHi_aedeuaJHyiBmLtc3HbBfQ5xe66oLS2cdp67GtLr6-ViBxjBH3u_DeLXW4SriAz_H96j4uXxyDFNxQpOyeTrpwMfO3OrGRqE6L6p5cJSxG1Zl4B_aOBckAKCXtcOYwjnOzohR3LbwSDhPOkqb_7aoyJOWEIYhqWI5mghdq-i6GHQb3u8tvUiCZ7HMfNhk5oxhuOSEQoePc5BYJ6HdLOBmHdMOJ1droRhgQCm7EfbAa1q40Wc280QcUCUGVmvPGYuE8-7s0u0rw4TEamPMieTz3PoJmWGryXNFlG5oxw"
+}
+INFO     log:logger_util.py:71 接口请求 params 参数 ==>> {
+    "taskId": "d187646a-ec7f-212d-7652-d39f839de489",
+    "groupId": "",
+    "returnId": true
+}
+INFO     log:logger_util.py:73 接口请求体 data 参数 ==>> null
+INFO     log:logger_util.py:75 接口请求体 json 参数 ==>> null
+INFO     log:logger_util.py:76 接口上传附件 files 参数 ==>> None
+INFO     log:logger_util.py:78 接口 cookies 参数 ==>> null
+INFO     log:validate_util.py:20 断言方式：equals,预期结果：{'status_code': 200, 'error': 'success'}
+INFO     log:test_01_login_copytask_deletetask.py:16 步骤2 ==>> 复制task
+INFO     log:yaml_analysis_util.py:19 yaml基本架构检查通过
+INFO     log:logger_util.py:65 接口请求地址 ==>> delete
+INFO     log:logger_util.py:66 接口请求方式 ==>> https://v2.clientapi.bazhuayu.com/api/task/batch/deleteTask
+INFO     log:logger_util.py:69 接口请求头 ==>> {
+    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImdXS3hWc0F4SHhaMDlDcWh6NkNJb3ciLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2NzgyNDQ3MTAsImV4cCI6MTY3ODMzMTExMCwiaXNzIjoiaHR0cHM6Ly9pZGVudGl0eS5iYXpodWF5dS5jb20iLCJhdWQiOlsiQ2xpZW50QXBpIiwiRGF0YUFwaSIsIkFkdmFuY2VkQXBpIiwiQ2xvdWRBZ2VudCIsIkNsdXN0ZXJTZXJ2aWNlIl0sImNsaWVudF9pZCI6Ik9jdG9wdXMiLCJzdWIiOiJlZTVkZDAxNC04MGE3LTQ0NTAtYmEzMi1lYWZiZmRhNGYzNjgiLCJhdXRoX3RpbWUiOjE2NzgyNDQ3MTAsImlkcCI6ImxvY2FsIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJlZTVkZDAxNC04MGE3LTQ0NTAtYmEzMi1lYWZiZmRhNGYzNjgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoieWtuODk1MzQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ5a244OTUzNCIsInVuaXF1ZV9uYW1lIjoieWtuODk1MzQiLCJyZWdpc3Rlcl9kYXRlIjoiMjAyMi0wOS0wOFQxOTo1MzoyOCswODowMCIsImxhc3RfbG9naW5fZGF0ZSI6IjIwMjMtMDMtMDhUMTA6NTc6MzYrMDg6MDAiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ5a244OTUzNEB5dW9pYS5jb20iLCJlbWFpbCI6Inlrbjg5NTM0QHl1b2lhLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJDbGllbnRBcGkiLCJEYXRhQXBpIiwiQWR2YW5jZWRBcGkiLCJDbG91ZEFnZW50IiwiQ2x1c3RlclNlcnZpY2UiXX0.QcRp4_82uWBfiOkATCDTWqWfCtE8pBhIi4CayCsfzk-THHi_aedeuaJHyiBmLtc3HbBfQ5xe66oLS2cdp67GtLr6-ViBxjBH3u_DeLXW4SriAz_H96j4uXxyDFNxQpOyeTrpwMfO3OrGRqE6L6p5cJSxG1Zl4B_aOBckAKCXtcOYwjnOzohR3LbwSDhPOkqb_7aoyJOWEIYhqWI5mghdq-i6GHQb3u8tvUiCZ7HMfNhk5oxhuOSEQoePc5BYJ6HdLOBmHdMOJ1droRhgQCm7EfbAa1q40Wc280QcUCUGVmvPGYuE8-7s0u0rw4TEamPMieTz3PoJmWGryXNFlG5oxw",
+    "Content-Type": "application/json"
+}
+INFO     log:logger_util.py:71 接口请求 params 参数 ==>> null
+INFO     log:logger_util.py:73 接口请求体 data 参数 ==>> null
+INFO     log:logger_util.py:75 接口请求体 json 参数 ==>> {
+    "taskIds": [
+        "b1389baa-d43e-4f01-880f-672d849f6466"
+    ]
+}
+INFO     log:logger_util.py:76 接口上传附件 files 参数 ==>> None
+INFO     log:logger_util.py:78 接口 cookies 参数 ==>> null
+INFO     log:validate_util.py:20 断言方式：equals,预期结果：{'status_code': 200, 'data': []}
+INFO     log:validate_util.py:20 断言方式：contains,预期结果：success
+INFO     log:test_01_login_copytask_deletetask.py:20 步骤3 ==>> 删除task
+INFO     log:test_01_login_copytask_deletetask.py:48 *********************** 结束执行用例 ***********************

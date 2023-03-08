@@ -1,5 +1,5 @@
 import requests
-import json as complexjson
+import json 
 from service.common.yaml_analysis_util import YamlAnalysis
 from service.common.yaml_operate_util import read_config_yaml
 from service.common.logger_util import LoggerUtil, logger
@@ -28,13 +28,16 @@ class RequestUtil():
         last_caseinfo = YamlAnalysis.standard_yaml(self, caseinfo)
         method = last_caseinfo["method"]
         url = last_caseinfo["url"]
-        kwargs = last_caseinfo['request']
+        kwargs = last_caseinfo["request"]
 
         # 输出日志获取请求信息
         LoggerUtil.request_log(method, url, **kwargs)
 
-        if method == "get" or method == "post" or method == "put" or method == "delete" or method == "patch":
+        if method == "get" or method == "post" or method == "put" or method == "patch":
             res = RequestUtil.session.request(method, url, **kwargs)
+
+        elif method == "delete":
+            res = requests.delete(url, **kwargs)
         else:
             logger.info('不支持的接口请求方式！')
         

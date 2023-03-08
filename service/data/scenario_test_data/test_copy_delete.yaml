@@ -41,9 +41,15 @@
       url: api/task/batch/deleteTask
       headers: 
         Authorization: Bearer access_token
-      data: 
-        taskIds: [taskId]
+        Content-Type: "application/json"
+      json: 
+        taskIds: taskIds
     validate:
       - equals:
           status_code: 200
+          data: []
+      - contains: success
+
+
+
 

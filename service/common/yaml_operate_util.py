@@ -49,7 +49,9 @@ def read_extract_yaml(goal):
 def read_extract_yaml_list(goal):
     with open(EXTACT_FILE, encoding="utf-8", mode="r") as f:
         value = yaml.load(f.read(), Loader=yaml.FullLoader)
-        print(value)
+        trans_list = []
+        trans_list.append(value[goal])
+        return trans_list
         # for line in f.readlines():
         #     if goal in line:
         #         value = yaml.load(line.read(), Loader=yaml.FullLoader)

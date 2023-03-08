@@ -39,7 +39,7 @@ class Task():
         validate.validate_result(caseinfo["validate"], return_json, return_code)
 
         if "data" in dict(return_json).keys():
-            write_extract_yaml({"taskId": return_json["data"]})
+            write_extract_yaml({"taskIds": return_json["data"]})
 
     '''删除任务列表'''
     def deletetask(self, caseinfo):
